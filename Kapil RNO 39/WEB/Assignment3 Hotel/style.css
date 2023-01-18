@@ -1,0 +1,23 @@
+ul {
+    list-style: none;
+}
+
+.container {
+    text-align: center;
+    border: solid;
+    width: 36%;
+}
+
+#x1,
+#x2 {
+    width: min-content;
+
+}
+
+.s1 {
+    font-weight: bold;
+    color: #171d1b;
+    background-color: rgb(139, 217, 219);
+    margin-top: 20px;
+
+}

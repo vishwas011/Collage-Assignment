@@ -1,0 +1,32 @@
+<html>
+
+<head>
+    <title>Student Details</title>
+</head>
+
+<body>
+    <h1>Student Details</h1>
+    <table border="1">
+        <tr>
+            <th>Rollno</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Grade</th>
+            <th>courseId</th>
+        </tr>
+ @foreach(var item in ViewBag.Students)
+ {
+    <tr>
+        <td>@item.Id</td>
+        <td>@item.name</td>
+        <td>@item.age</td>
+        <td>@item.coursegrade</td>
+        <td>@item.CourseId</td>
+    
+    </tr>
+ }   
+        
+
+</body>
+
+</html>

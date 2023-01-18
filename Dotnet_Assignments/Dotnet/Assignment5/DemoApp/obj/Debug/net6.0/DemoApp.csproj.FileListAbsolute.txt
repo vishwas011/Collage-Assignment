@@ -1,0 +1,15 @@
+D:\Dotnet_Assignments\Dotnet\Assignment5\DemoApp\bin\Debug\net6.0\DemoApp.exe
+D:\Dotnet_Assignments\Dotnet\Assignment5\DemoApp\bin\Debug\net6.0\DemoApp.deps.json
+D:\Dotnet_Assignments\Dotnet\Assignment5\DemoApp\bin\Debug\net6.0\DemoApp.runtimeconfig.json
+D:\Dotnet_Assignments\Dotnet\Assignment5\DemoApp\bin\Debug\net6.0\DemoApp.dll
+D:\Dotnet_Assignments\Dotnet\Assignment5\DemoApp\bin\Debug\net6.0\DemoApp.pdb
+D:\Dotnet_Assignments\Dotnet\Assignment5\DemoApp\obj\Debug\net6.0\DemoApp.csproj.AssemblyReference.cache
+D:\Dotnet_Assignments\Dotnet\Assignment5\DemoApp\obj\Debug\net6.0\DemoApp.GeneratedMSBuildEditorConfig.editorconfig
+D:\Dotnet_Assignments\Dotnet\Assignment5\DemoApp\obj\Debug\net6.0\DemoApp.AssemblyInfoInputs.cache
+D:\Dotnet_Assignments\Dotnet\Assignment5\DemoApp\obj\Debug\net6.0\DemoApp.AssemblyInfo.cs
+D:\Dotnet_Assignments\Dotnet\Assignment5\DemoApp\obj\Debug\net6.0\DemoApp.csproj.CoreCompileInputs.cache
+D:\Dotnet_Assignments\Dotnet\Assignment5\DemoApp\obj\Debug\net6.0\DemoApp.dll
+D:\Dotnet_Assignments\Dotnet\Assignment5\DemoApp\obj\Debug\net6.0\refint\DemoApp.dll
+D:\Dotnet_Assignments\Dotnet\Assignment5\DemoApp\obj\Debug\net6.0\DemoApp.pdb
+D:\Dotnet_Assignments\Dotnet\Assignment5\DemoApp\obj\Debug\net6.0\DemoApp.genruntimeconfig.cache
+D:\Dotnet_Assignments\Dotnet\Assignment5\DemoApp\obj\Debug\net6.0\ref\DemoApp.dll

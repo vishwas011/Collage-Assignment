@@ -1,0 +1,26 @@
+@model BasicWebApp.Services.StudentDbContext
+<html>
+    <head>
+        <title>COURSE LIST</title>
+    </head>
+    <body>
+        <h1>Course List</h1>
+       
+        <table border="1">
+            <tr>
+                <th>Course Id</th>
+                <th>Course Name</th>
+                <th>Fees</th>
+            </tr>
+            @foreach (var crs in Model.CourseInfo)
+            {
+                <tr>
+                    <td>@crs.Id</td>
+                    <td>@crs.CourseName</td>
+                    <td>@crs.Fees</td>
+                    <td><a href = "Details/@crs.Id">Details</a></td>
+                </tr>
+            }
+        </table>
+    </body>
+</html>

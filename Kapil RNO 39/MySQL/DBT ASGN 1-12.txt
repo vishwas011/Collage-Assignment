@@ -1,0 +1,487 @@
+ASSIGNMENT 1
+
+create table CUSTOMERS (CNUM number(4), CName varchar2(10), City varchar2(10), Rating number (4), Snum number(4));
+
+Table created.
+
+SQL> desc customers;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CNUM                                               NUMBER(4)
+ CNAME                                              VARCHAR2(10)
+ CITY                                               VARCHAR2(10)
+ RATING                                             NUMBER(4)
+ SNUM                                               NUMBER(4)
+
+SQL> insert into customers values(2001,' 'Hoffman', 'London', 100,1001);
+ERROR:
+ORA-01756: quoted string not properly terminated
+
+
+SQL> insert into customers values(2001,' 'Hoffman', 'London', 100,1001);^[[D^[[D^[[^C^C^C                                                           
+
+SQL> insert into customers values (2001, 'Hoffman', 'London' , 100, 1001);
+
+1 row created.
+
+SQL> insert into customers values (2002, 'Giovanni', 'Rome' , 200, 1003);
+
+1 row created.
+
+SQL> insert into customers values (2003, 'Liu', 'San Jose', 200,1002);
+
+1 row created.
+
+SQL> insert into customers values (2004, 'Grass', 'Berlin',300,1002);
+
+1 row created.
+
+SQL> insert into customers values (2006, 'Clemens', 'London',100,1001);
+
+1 row created.
+
+SQL> insert into customers values (2008, 'Cisneros', 'San Jose',300,1007);
+
+1 row created.
+
+SQL> insert into customers values (2007, 'Pereira', 'Rome' , 100, 1004);
+
+1 row created.
+
+SQL> select * from customers;
+
+------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------
+
+ASSIGNMENT 2
+
+	1. CNUM IS PRIMARY KEY OF TABLE -> CUSTOMERS
+	2. RATING IS THE 4TH COLUMN OF CUSTOMERS TABLE.
+	3. ROW    --> TUPLE , ENTITY
+	   COLUMN --> ATTRIBUTE, KEY
+	4. Because tuples don’t have orders.
+	we can use limit command 
+
+----------------------------------------------------------------------------
+----------------------------------------------------------------------------
+
+ASSIGNMENT 3
+	1.yes
+	2. DML(Data Manipulation Language) Subdivision's
+	   "INSERT" statement is used to insert values in tables.
+---------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
+
+ASSIGNMENT 4
+	1. select onum, amt, odate from orders;
+	2. select onum, amt, odate from orders;
+	3. select city, sname, snum, comm from salespeople;
+	4. select rating,cname from customers where city ='San Jose';
+	5.SELECT DISTINCT snum,onum FROM salespeople
+--------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
+ASSIGNMENT 5
+	1. select * from orders where amt > 1000;
+	2. select sname,city from salespeople where city = 'London' and comm > .10;
+	3. select * from customers where rating > 100 or city = 'Rome'; 
+	4. select * from orders where not (odate = '03-OCT-1990' and cnum > 2003);
+
+      		ONUM        AMT ODATE           CNUM       SNUM
+		---------- ---------- --------- ---------- ----------
+      		3003     767.19 03-OCT-90       2001       1001
+      		3005    5060.45 03-OCT-90       2003       1002
+      		3009    1713.23 04-OCT-90       2002       1003
+      		3007      75.75 04-OCT-90       2004       1002
+      		3008       4723 05-OCT-90       2006       1001
+      		3010    1309.95 06-OCT-90       2004       1002
+      		3011    9891.88 06-OCT-90       2006       1001
+
+	5.select * from orders where not ((odate ='03-OCT-1990' or  snum>1006 ) and amt >= 1500);
+
+		      ONUM        AMT ODATE           CNUM       SNUM
+		---------- ---------- --------- ---------- ----------
+		      3001      18.69 03-OCT-90       2008       1007
+		      3003     767.19 03-OCT-90       2001       1001
+		      3006    1098.16 03-OCT-90       2008       1007
+		      3009    1713.23 04-OCT-90       2002       1003
+		      3007      75.75 04-OCT-90       2004       1002
+		      3008       4723 05-OCT-90       2006       1001
+		      3010    1309.95 06-OCT-90       2004       1002
+		      3011    9891.88 06-OCT-90       2006       1001
+
+	6. select snum,sname,city,comm from salespeople where comm = .13;  
+----------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------
+
+ASSIGNMENT 6
+
+	1.select * from orders where odate='03-OCT-1990' or odate='04-OCT-1990';
+		or
+	 select * from orders where odate between '03-OCT-1990' and '04-OCT-1990';
+
+      ONUM        AMT ODATE           CNUM       SNUM
+---------- ---------- --------- ---------- ----------
+      3001      18.69 03-OCT-90       2008       1007
+      3003     767.19 03-OCT-90       2001       1001
+      3005    5060.45 03-OCT-90       2003       1002
+      3006    1098.16 03-OCT-90       2008       1007
+      3009    1713.23 04-OCT-90       2002       1003
+      3007      75.75 04-OCT-90       2004       1002
+      3002     1900.1 03-OCT-90       2007       1004
+
+
+	2. select * from customers where snum = 1001 or snum= 1004;
+
+	
+      CNUM CNAME      CITY           RATING       SNUM
+---------- ---------- ---------- ---------- ----------
+      2001 Hoffman    London            100       1001
+      2006 Clemens    London            100       1001
+      2007 Pereira    Rome              100       1004
+
+	3. select * from customers where cname like 'A%' or cname like'B%' or cname like 'C%' or cname like 'D%' or cname like 'E%' or cname like 'F%' or cname like 'G%';
+	 
+	     CNUM CNAME      CITY           RATING       SNUM
+	---------- ---------- ---------- ---------- ----------
+    	 2002 	   Giovanni   Rome              200       1003
+     	 2004      Grass      Berlin            300       1002
+     	 2006      Clemens    London            100       1001
+         2008      Cisneros   San Jose          300       1007
+
+	SQL> SELECT * FROM customers WHERE substr(cname,1) BETWEEN 'A' AND 'G';
+
+      CNUM CNAME      CITY           RATING       SNUM
+---------- ---------- ---------- ---------- ----------
+      2006 Clemens    London            100       1001
+      2008 Cisneros   San Jose          300       1007
+
+	SQL> SELECT * FROM customers WHERE substr(cname,1) BETWEEN 'A' AND 'H';
+
+      CNUM CNAME      CITY           RATING       SNUM
+---------- ---------- ---------- ---------- ----------
+      2002 Giovanni   Rome              200       1003
+      2004 Grass      Berlin            300       1002
+      2006 Clemens    London            100       1001
+      2008 Cisneros   San Jose          300       1007
+
+
+	4. select * from customers where cname like 'C%';
+
+      CNUM CNAME      CITY           RATING       SNUM
+---------- ---------- ---------- ---------- ----------
+      2006 Clemens    London            100       1001
+      2008 Cisneros   San Jose          300       1007
+
+	5. select * from orders where amt is not null and amt != 0;
+------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------
+
+ASSIGNMENT 7 
+
+	
+	1. SELECT COUNT(*) FROM RNO102_ORDERS
+		WHERE ODATE = '03-OCT-1990';
+
+	COUNT(*)
+	----------
+         5
+
+
+	2.SELECT COUNT(DISTINCT CITY) FROM CUSTOMERS WHERE CITY IS NOT NULL;
+
+	COUNT(DISTINCTCITY)
+	-------------------
+	                  4
+
+	3.SELECT  MIN(AMT), CNUM FROM ORDERS GROUP BY CNUM;
+
+	  MIN(AMT)       CNUM
+	---------- ----------
+	    767.19       2001
+	      4723       2006
+	    1900.1       2007
+	   5060.45       2003
+	     75.75       2004
+	     18.69       2008
+	   1713.23       2002
+
+
+	4. SELECT * FROM CUSTOMERS WHERE CNAME LIKE 'G%' ORDER BY CNAME;
+
+      CNUM CNAME      CITY           RATING       SNUM
+---------- ---------- ---------- ---------- ----------
+      2002 Giovanni   Rome              200       1003
+      2004 Grass      Berlin            300       1002
+	
+	5. SELECT MAX (RATING), city FROM CUSTOMERS GROUP BY CITY; 
+
+
+MAX(RATING) CITY
+----------- ----------
+        100 London
+        300 Berlin
+        200 Rome
+        300 San Jose
+
+	6. SELECT COUNT (SNUM) , ODATE FROM ORDERS GROUP BY ODATE;
+
+COUNT(SNUM) ODATE
+----------- ---------
+          2 04-OCT-90
+          1 05-OCT-90
+          5 03-OCT-90
+          2 06-OCT-90
+
+------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------
+
+ASSIGNMENT 8 
+
+
+	1. SELECT ONUM,SNUM,AMT,0.12 * AMT "COMMISSION" FROM ORDERS;
+
+
+      ONUM       SNUM        AMT COMMISSION
+---------- ---------- ---------- ----------
+      3001       1007      18.69     2.2428
+      3003       1001     767.19    92.0628
+      3005       1002    5060.45    607.254
+      3006       1007    1098.16   131.7792
+      3009       1003    1713.23   205.5876
+      3007       1002      75.75       9.09
+      3008       1001       4723     566.76
+      3010       1002    1309.95    157.194
+      3011       1001    9891.88  1187.0256
+      3002       1004     1900.1    228.012
+
+	2. SELECT ' FOR THE CITY ' || CITY || ' ,THE HIGHEST RATING IS : ' || MAX(RATING)" OUTPUT " FROM CUSTOMERS GROUP BY CITY;
+
+OUTPUT
+--------------------------------------------------------------------------------
+ FOR THE CITY London ,THE HIGHEST RATING IS : 100
+ FOR THE CITY Berlin ,THE HIGHEST RATING IS : 300
+ FOR THE CITY Rome ,THE HIGHEST RATING IS : 200
+ FOR THE CITY San Jose ,THE HIGHEST RATING IS : 300
+
+	3. SELECT RATING,CNAME, CNUM FROM CUSTOMERS ORDER BY RATING DESC;
+
+    RATING CNAME            CNUM
+---------- ---------- ----------
+       300 Grass            2004
+       300 Cisneros         2008
+       200 Liu              2003
+       200 Giovanni         2002
+       100 Pereira          2007
+       100 Clemens          2006
+       100 Hoffman          2001
+
+	4. select sum(amt) as amount,odate from orders group by odate order by amount desc;
+
+    AMOUNT ODATE
+---------- ---------
+  11201.83 06-OCT-90
+   8844.59 03-OCT-90
+      4723 05-OCT-90
+   1788.98 04-OCT-90
+----------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------
+
+ASSIGNMENT 9 
+
+
+1. SELECT ONUM , CNAME FROM ORDERS,CUSTOMERS
+	WHERE ORDERS.CNUM = CUSTOMERS.CNUM;
+
+ONUM CNAME
+---------- ----------
+      3001 Cisneros
+      3003 Hoffman
+      3005 Liu
+      3006 Cisneros
+      3009 Giovanni
+      3007 Grass
+      3008 Clemens
+      3010 Grass
+      3011 Clemens
+      3002 Pereira
+
+2. SELECT ONUM, SNAME, CNAME FROM ORDERS, CUSTOMERS, SALESPEOPLE
+	WHERE ORDERS.CNUM = CUSTOMERS.CNUM AND ORDERS.SNUM = SALESPEOPLE.SNUM;
+
+      ONUM SNAME      CNAME
+---------- ---------- ----------
+      3003 Peel       Hoffman
+      3009 Axelrod    Giovanni
+      3005 Serres     Liu
+      3010 Serres     Grass
+      3007 Serres     Grass
+      3011 Peel       Clemens
+      3008 Peel       Clemens
+      3006 Ritkin     Cisneros
+      3001 Ritkin     Cisneros
+      3002 Motika     Pereira
+
+3. SELECT CNAME, SNAME, COMM FROM SALESPEOPLE,CUSTOMERS
+	WHERE SALESPEOPLE.SNUM = CUSTOMERS.SNUM AND SALESPEOPLE.COMM > .12;
+
+CNAME      SNAME            COMM
+---------- ---------- ----------
+Liu        Serres            .13
+Grass      Serres            .13
+Cisneros   Ritkin            .15
+
+4. SELECT AMT, COMM, ORDERS.AMT * SALESPEOPLE.COMM "CALCULATION", CUSTOMERS.CNUM  FROM SALESPEOPLE,CUSTOMERS,ORDERS
+	WHERE ORDERS.SNUM = CUSTOMERS.SNUM AND ORDERS.SNUM = SALESPEOPLE.SNUM AND CUSTOMERS.RATING > 100 ;
+
+
+       AMT       COMM CALCULATION       CNUM
+---------- ---------- ----------- ----------
+   1309.95        .13    170.2935       2003
+   1309.95        .13    170.2935       2004
+     75.75        .13      9.8475       2003
+     75.75        .13      9.8475       2004
+   5060.45        .13    657.8585       2003
+   5060.45        .13    657.8585       2004
+   1098.16        .15     164.724       2008
+     18.69        .15      2.8035       2008
+   1713.23         .1     171.323       2002
+
+>SELECT AMT, COMM, ORDERS.AMT * SALESPEOPLE.COMM "CALCULATION", CUSTOMERS.CNAME  FROM SALESPEOPLE,CUSTOMERS,ORDERS
+	WHERE ORDERS.SNUM = CUSTOMERS.SNUM AND ORDERS.SNUM = SALESPEOPLE.SNUM AND CUSTOMERS.RATING > 100 ;
+   
+  AMT       COMM CALCULATION CNAME
+---------- ---------- ----------- ----------
+   1309.95        .13    170.2935 Liu
+   1309.95        .13    170.2935 Grass
+     75.75        .13      9.8475 Liu
+     75.75        .13      9.8475 Grass
+   5060.45        .13    657.8585 Liu
+   5060.45        .13    657.8585 Grass
+   1098.16        .15     164.724 Cisneros
+     18.69        .15      2.8035 Cisneros
+   1713.23         .1     171.323 Giovanni
+
+
+>SELECT ONUM, AMT, COMM, ORDERS.AMT * SALESPEOPLE.COMM "CALCULATION", CUSTOMERS.CNAME  FROM SALESPEOPLE,CUSTOMERS,ORDERS
+	WHERE ORDERS.SNUM = CUSTOMERS.SNUM AND ORDERS.SNUM = SALESPEOPLE.SNUM AND CUSTOMERS.RATING > 100 ;
+
+     ONUM        AMT       COMM CALCULATION CNAME
+---------- ---------- ---------- ----------- ----------
+      3010    1309.95        .13    170.2935 Liu
+      3010    1309.95        .13    170.2935 Grass
+      3007      75.75        .13      9.8475 Liu
+      3007      75.75        .13      9.8475 Grass
+      3005    5060.45        .13    657.8585 Liu
+      3005    5060.45        .13    657.8585 Grass
+      3006    1098.16        .15     164.724 Cisneros
+      3001      18.69        .15      2.8035 Cisneros
+      3009    1713.23         .1     171.323 Giovanni
+
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+ASSIGNMENT 10
+
+1. SELECT A.SNAME "A",B.SNAME "B",A.CITY FROM SALESPEOPLE A ,SALESPEOPLE B 
+   	WHERE A.CITY = B.CITY AND A.SNAME < B.SNAME;
+
+A          B          CITY
+---------- ---------- ----------
+Motika     Peel       London
+
+SELECT A.SNAME "A",B.SNAME "B",A.CITY FROM SALESPEOPLE A ,SALESPEOPLE B 
+   	WHERE A.CITY = B.CITY AND A.SNAME != B.SNAME;
+
+A          B          CITY
+---------- ---------- ----------
+Motika     Peel       London
+Peel       Motika     London
+ 
+2. SELECT CNAME, CITY FROM CUSTOMERS
+	WHERE RATING = 
+	(SELECT RATING FROM CUSTOMERS 
+	WHERE CNAME = 'Hoffman');
+
+CNAME      CITY
+---------- ----------
+Hoffman    London
+Clemens    London
+Pereira    Rome
+
+
+-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+
+ASSIGNMENT 11
+
+1. SELECT * FROM ORDERS 
+	WHERE CNUM = 
+	(SELECT CNUM FROM CUSTOMERS 
+	WHERE CNAME = 'Cisneros');
+
+    ONUM        AMT ODATE           CNUM       SNUM
+---------- ---------- --------- ---------- ----------
+      3001      18.69 03-OCT-90       2008       1007
+      3006    1098.16 03-OCT-90       2008       1007
+
+2. SELECT CNAME, RATING FROM ORDERS,CUSTOMERS 
+	WHERE ORDERS.CNUM = CUSTOMERS.CNUM AND ORDERS.AMT >
+	(SELECT AVG(AMT) FROM ORDERS)
+	GROUP BY CNAME,RATING;
+
+CNAME          RATING
+---------- ----------
+Clemens           100
+Liu               200
+
+
+3. SELECT SUM(AMT) FROM ORDERS 
+	GROUP BY SNUM 
+	HAVING SUM(AMT) >
+	(SELECT MAX(AMT) FROM ORDERS);
+
+	SELECT SUM(AMT) FROM ORDERS 
+		HAVING SUM(AMT) >
+		(SELECT MAX(AMT) FROM ORDERS);
+
+  SUM(AMT)
+----------
+  15382.07
+
+----------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------
+ASSIGNMENT 12
+	
+1. SELECT * FROM customers
+	WHERE rating >=ANY
+    (SELECT rating FROM customers
+     WHERE snum IN ( SELECT snum FROM salespeople 
+	WHERE sname='Serres'));
+
+      CNUM CNAME      CITY           RATING       SNUM
+---------- ---------- ---------- ---------- ----------
+      2004 Grass      Berlin            300       1002
+      2008 Cisneros   San Jose          300       1007
+      2003 Liu        San Jose          200       1002
+      2002 Giovanni   Rome              200       1003
+
+
+2. SELECT SNUM , SNAME, CITY FROM SALESPEOPLE
+WHERE (SNUM,CITY) != ALL(SELECT SNUM,CITY FROM customers);
+
+      SNUM SNAME      CITY
+---------- ---------- ----------
+      1003 Axelrod    New York
+      1004 Motika     London
+      1007 Ritkin     Barcelona
+
+3. SELECT * FROM ORDERS WHERE AMT > ANY
+	(SELECT AMT FROM ORDERS ,CUSTOMERS
+	 WHERE ORDERS.CNUM=CUSTOMERS.CNUM AND CUSTOMERS.CITY='LONDON');
+	
+4. SELECT * FROM ORDERS WHERE AMT > 
+	(SELECT MAX(AMT) FROM ORDERS ,CUSTOMERS
+	 WHERE ORDERS.CNUM=CUSTOMERS.CNUM AND CUSTOMERS.CITY='LONDON');
+
+  SELECT * FROM ORDERS WHERE AMT > 
+	(SELECT MIN(AMT) FROM ORDERS ,CUSTOMERS
+	 WHERE ORDERS.CNUM=CUSTOMERS.CNUM AND CUSTOMERS.CITY='LONDON');

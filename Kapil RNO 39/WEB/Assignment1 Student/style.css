@@ -1,0 +1,20 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+ul {
+    list-style: none;
+}
+
+#t{
+    visibility: hidden;
+}
+#o1{
+    width: fit-content;
+    border: solid;
+    border-radius: 15px;
+}
+
+h1{
+    margin-top: 10px;
+}

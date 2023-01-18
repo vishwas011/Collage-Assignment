@@ -1,0 +1,94 @@
+show databases;
+use thane;
+
+1.create table SEMP (EMPNO CHAR(4),
+EMPNAME CHAR(20),
+BASIC FLOAT,
+DEPTNO CHAR(2),
+DEPTHEAD CHAR(4));
+
+2.create table SDEPT (DEPTNO CHAR(2),
+DEPTNAME CHAR(15));
+
+3.insert into SDEPT values ('10', 'Development');
+insert into SDEPT values('20', 'Training');
+
+4.insert into SEMP values ('0001', 'SUNIL', 6000, '10', null);
+insert into SEMP values ('0002', 'HIREN', 8000, '20', null);
+insert into SEMP values ('0003', 'ALI', 4000, '10', '0001');
+insert into SEMP values ('0004', 'GEORGE', 6000,null, '0002');
+
+select * from Semp;
+
+---------------------------------------------------------
+
+create table SUPPLIER (S CHAR(2),Sname varchar(15),
+status numeric,City varchar(20));
+
+insert into Supplier values("S1","Alok",10,"Mumbai"),
+("S2","Mavin",20,"Nagpur"),
+("S3","Aditya",11,"Gorakhpur"),
+("S4","Rishi",12,"Pune"),("S5","King",13,"Nashik"),
+("S6","Scott",14,"London"),("S7","Finn",15,"Paris"),
+("S8","Mary",16,"London"),("S9","Rita",17,"Athens"),
+ ("S0","Ruhan",18,"Athens");
+
+create table PARTS (P CHAR(2),Pname varchar(15),
+color varchar(15),weight numeric,City varchar(20));
+
+insert into Parts values("P6","Gears","Black",13,"London"),("P7","Raspberry","Green",14,"Paris"),
+("P8","Sauna","Grey",15,"London"),("P9","RAM","Chrome",14,"Berlin"),
+("P0","Solar","Blue",16,"Sydney");
+
+create table PROJECTS (J CHAR(2),Jname varchar(15),
+City varchar(20));
+
+insert into Projects values("J1","Estate","Athens"),("J2","IT","London"),
+("J3","Agri","Athens"),("J4","Drelling","Mumbai"),("J5","Mte","Mumbai");
+
+create table SUPPLIER_PARTS_PROJECT (S CHAR(2),P CHAR(2),
+J CHAR(2),QTY NUMERIC);
+
+
+insert into SUPPLIER_PARTS_PROJECT values("S1","P1","J1",20),("S2","P2","J2",10),
+("S3","P3","J3",35),("S4","P4","J4",40),("S5","P5","J5",50),("S6","P6","J6",55),
+("S7","P7","J7",22),("S8","P8","J8",54),("S9","P9","J9",64),("S0","P0","J0",17);
+
+5.select * from Supplier;
+
+6.select S, sname from Supplier;
+
+7.select PName,Color from Parts where city="london";
+
+8.select * from Supplier where city ="london";
+
+9.select * from Supplier where city ="Paris" or city="athens";
+
+10.select * from Projects where city="athens";
+
+11.select pname from parts where weight >= 12 and weight <= 14;
+
+12.select * from Supplier where status >= 20;
+
+13.select * from Supplier where city != "london";
+
+14.select city from supplier;
+
+15.select weight "Weight in G", weight/1000 "Weight in KG", weight*1000 "Weight in MG" from parts;
+
+-----------------------------------------
+ex2
+
+1.select * from supplier order by city desc;
+
+2.select * from parts order by city, pname;
+
+3.select * from Supplier where status > 10 and status < 20;
+
+4.select pname,weight from parts where !(weight > 10 and weight < 15);
+
+5. select pname from parts where pname like'S%';
+
+6.select * from supplier where city like'L%';
+
+7.select  * from projects where jname like '__n%';

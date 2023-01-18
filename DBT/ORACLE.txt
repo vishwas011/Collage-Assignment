@@ -1,0 +1,200 @@
+
+			ASSIGNMENT 1.
+
+create table SALESPEOPLE (Snum number(4), Sname varchar2(10), City varchar2(10), Comm number(3,2));
+
+create table CUSTOMERS(Cnum number(4), Cname varchar2(10), City varchar2(10), Rating number(4), Snum number(4));
+
+create table ORDERS(Onum number(4),Amt number(7,2),Odate date,Cnum number(4),Snum number(4));
+
+INSERT INTO SALESPEOPLE VALUES(1001, 'Peel', 'London', .12);
+INSERT INTO SALESPEOPLE VALUES(1002, 'Serres', 'San Jose', .13);
+INSERT INTO SALESPEOPLE VALUES(1004, 'Motika', 'London', .11);
+INSERT INTO SALESPEOPLE VALUES(1007, 'Rifkin', 'Barcelona', .15);
+INSERT INTO SALESPEOPLE VALUES(1003, 'Axelrod', 'New York', .10);
+
+INSERT INTO CUSTOMERS VALUES(2001, 'Hoffman', 'London', 100, 1001);
+INSERT INTO CUSTOMERS VALUES(2002, 'Giovanni', 'Rome', 200, 1003);
+INSERT INTO CUSTOMERS VALUES(2003, 'Liu', 'San Jose', 200, 1002);
+INSERT INTO CUSTOMERS VALUES(2004, 'Grass', 'Berlin', 300, 1002);
+INSERT INTO CUSTOMERS VALUES(2006, 'Clemens', 'London', 100, 1001);
+INSERT INTO CUSTOMERS VALUES(2008, 'Cisneros', 'San Jose', 300, 1007);
+INSERT INTO CUSTOMERS VALUES(2007, 'Pereira', 'Rome', 100, 1004);
+
+INSERT INTO ORDERS VALUES(3003, 767.19, '03- OCT -1990', 2001, 1001);
+INSERT INTO ORDERS VALUES(3002 ,1900.10, '03- OCT -1990', 2007, 1004);
+INSERT INTO ORDERS VALUES(3005 ,5160.45, '03- OCT -1990', 2003, 1002);
+INSERT INTO ORDERS VALUES(3006 ,1098.16, '03- OCT -1990', 2008, 1007);
+INSERT INTO ORDERS VALUES(3009, 1713.23, '04- OCT -1990', 2002, 1003);
+INSERT INTO ORDERS VALUES(3007 ,75.75, '04- OCT -1990', 2004, 1002);
+INSERT INTO ORDERS VALUES(3008, 4723.00, '05- OCT -1990', 2006, 1001);
+INSERT INTO ORDERS VALUES(3010, 1309.95, '06- OCT -1990', 2004, 1002);
+INSERT INTO ORDERS VALUES(3011, 9891.88, '06- OCT -1990', 2006, 1001);
+
+			ASSIGNMENT 2.
+
+1.  Which field of the Customers table is the primary key?
+ans. Cnum.
+
+2. What is the 4th column of the Customers table?
+ANS. Rating number(4).
+
+3.  What is another word for row? For column?
+ANS. row -> tuble, entity.
+     column -> attribute, key.
+
+4.  Why isn’t it possible to see the first five rows of a table?
+ans. because entered rows are not inserted in sequential manner.
+
+			ASSIGNMENT 3.
+
+1.  Does ANSI recognize the data type DATE?
+ANS YES
+
+2.  Which subdivision of SQL is used to insert values in tables?
+ANS DML(Data Manipulation Language).
+
+
+
+			ASSINMENT 4.
+
+
+SELECT Onum,Amt,Odate FROM ORDERS;
+
+
+SELECT * FROM CUSTOMERS WHERE Snum=1001;
+
+
+SELECT CITY, Sname, Snum, Comm FROM SALESPEOPLE;
+
+
+SELECT Rating, Cname FROM CUSTOMERS WHERE City='San Jose';
+ 
+SELECT DISTINCT Snum, Onum FROM ORDERS ORDER BY Snum;
+
+
+			ASSIGNMENT 5.
+
+SELECT * FROM ORDERS WHERE Amt>100;
+
+SELECT Sname, City FROM SALESPEOPLE WHERE City='London' and Comm > .10;
+
+SELECT * FROM CUSTOMER WHERE Rating<=100 OR City='Rome';
+
+Select * from Orders where (amt < 1000 OR NOT (odate = '03-OCT-1990'  AND cnum > 2003));
+ANS. Display all orders from order except date is 03-oct 1990 with cnum >2003 or orders
+     where amt is less then 1000 
+			or
+     Display all order having amount less then 1000 or having order except on 03-oct-1990
+     with cnum>2003.
+
+Select * from Orders where NOT ((odate = '03-OCT-1990' OR snum >1006) AND amt >= 1500);
+ANS. 
+
+
+ 
+Select snum, sname, city, comm From Salespeople
+where (comm > .12 OR comm <.14);?
+ans. SELECT * FROM SALESPEOPLE ;
+
+			
+			ASSIGNMENT 6.
+
+1. SELECT * FROM ORDERS WHERE Odate='03- OCT -1990' OR Odate='04- OCT -1990';
+   SELECT * FROM ORDERS WHERE Odate = ANY('03- OCT -1990','04- OCT -1990');
+
+2. SELECT * FROM CUSTOMERS WHERE Snum  IN (SELECT Snum FROM SALESPEOPLE WHERE Sname = 'Peel' OR Sname = 'Motika');
+
+3. SELECT * FROM CUSTOMERS WHERE SUBSTR(Cname,1,1) BETWEEN 'A' AND 'G';
+
+4. SELECT * FROM CUSTOMERS WHERE SUBSTR(Cname,1,1) = 'C';
+
+5. select * from ORDERS where Amt != any(0, null);
+
+
+			ASSIGNMENT 7.
+
+1) Write a query that counts all orders for October 3.
+ANS. SELECT * FROM ORDERS WHERE ODATE='03-OCT-90';
+
+2) Write a query that counts the number of different non-NULL city values in the 
+Customers table.
+ANS. SELECT COUNT(CITY) FROM CUSTOMERS ;
+
+3) Write a query that selects each customer’s smallest order.
+ANS. SELECT MIN(AMT), CNUM FROM ORDERS GROUP BY CNUM ORDER BY CNUM;
+
+4) Write a query that selects the first customer, in alphabetical order, whose name 
+begins with G.
+ANS. SELECT MIN(CNAME) FROM CUSTOMERS WHERE CNAME > 'G' AND CNAME < 'H';
+
+5) Write a query that selects the highest rating in each city.
+ANS. SELECT MAX(RATING), CITY FROM CUSTOMERS GROUP BY CITY;
+
+6) Write a query that counts the number of salespeople registering orders for each 
+day. (If a salesperson has more than one order on a given day, he or she should be 
+counted only once.)
+ANS. SELECT ODATE, COUNT(SNUM) FROM ORDERS GROUP BY ODATE;
+
+
+
+
+			ASSIGNMENT 8.
+1) Assume each salesperson has a 12% commission. Write a query on the orders 
+   table that will produce the order number, the salesperson number, and the amount 
+   of the salesperson’s commission for that order.
+ANS. SELECT ONUM, SNUM, AMT*0.12 COMM FROM ORDERS;
+
+2) Write a query on the Customers table that will find the highest rating in each city. 
+   Put the output in this form:
+   For the city (city), the highest rating is : (rating).
+ANS. SELECT MAX(RATING), CITY FROM CUSTOMERS GROUP BY CITY; 
+
+3) Write a query that lists customers in descending order of rating. Output the rating 
+   field first, followed by the customer’s name and number.
+ANS. SELECT RATING, CNAME, CNUM FROM CUSTOMERS ORDER BY RATING DESC;
+
+4) Write a query that totals the orders for each day and places the results in 
+descending order.
+ANS. SELECT SUM(AMT), ODATE FROM ORDERS GROUP BY ODATE ORDER BY SUM(AMT) DESC;
+
+
+			ASSIGNMENT 9.
+
+1) Write a query that lists each order number followed by the name of the customer 
+   who made the order.
+ANS. SELECT ORDERS.ONUM, CUSTOMERS.CNAME FROM ORDERS,CUSTOMERS WHERE CUSTOMERS.CNUM=ORDERS.CNUM;
+
+2) Write a query that gives the names of both the salesperson and the customer for 
+each order along with the order number.
+ANS.  SELECT ORDERS.ONUM, CUSTOMERS.CNAME, SALESPEOPLE.SNAME FROM SALESPEOPLE,ORDERS,CUSTOMERS WHERE CUSTOMERS.CNUM=ORDERS.CNUM AND SALESPEOPLE.SNUM=ORDERS.SNUM;
+
+3) Write a query that produces all customers serviced by salespeople with a 
+   commission above 12%. Output the customer’s name, the salesperson’s name, 
+   and the salesperson’s rate of commission.
+ANS. SELECT CUSTOMERS.CNAME , SALESPEOPLE.SNAME, SALESPEOPLE.COMM FROM SALESPEOPLE, CUSTOMERS WHERE SALESPEOPLE.SNUM=CUSTOMERS.SNUM  AND SALESPEOPLE.COMM>.12;
+
+4) Write a query that calculates the amount of the salesperson’s commission on each 
+   order by a customer with a rating above 100.
+ANS. SELECT ORDERS.AMT*SALESPEOPLE.COMM FROM  CUSTOMERS,SALESPEOPLE, ORDERS WHERE  SALESPEOPLE.SNUM=ORDERS.SNUM AND CUSTOMERS.SNUM=ORDERS.SNUM AND CUSTOMERS.RATING>100;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

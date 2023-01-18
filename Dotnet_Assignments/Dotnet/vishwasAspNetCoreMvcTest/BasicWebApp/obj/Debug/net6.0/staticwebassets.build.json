@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "Hash": "N3lqjkwVA8ZjVfpdyqGY/dqiB9NKPsgKIoxIX/clqg4=",
+  "Source": "BasicWebApp",
+  "BasePath": "_content/BasicWebApp",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "BasicWebApp\\wwwroot",
+      "Source": "BasicWebApp",
+      "ContentRoot": "D:\\vishwasdotnet\\vishwasAspNetCoreMvcTest\\BasicWebApp\\wwwroot\\",
+      "BasePath": "_content/BasicWebApp",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "D:\\vishwasdotnet\\vishwasAspNetCoreMvcTest\\BasicWebApp\\wwwroot\\Finance.html",
+      "SourceId": "BasicWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\vishwasdotnet\\vishwasAspNetCoreMvcTest\\BasicWebApp\\wwwroot\\",
+      "BasePath": "_content/BasicWebApp",
+      "RelativePath": "Finance.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Finance.html"
+    }
+  ]
+}

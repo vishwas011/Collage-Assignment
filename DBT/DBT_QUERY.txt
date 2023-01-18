@@ -1,0 +1,64 @@
+1)create table rno038_SALESPEOPLE(Snum number(4), Sname varchar2(20), City varchar2(20), Comm number(3,2));
+2)insert into rno038_SALESPEOPLE values (1001,'Peel','London',0.12)
+3)insert into rno038_SALESPEOPLE values (1002,'Serres','San Jose',0.13);
+4)insert into rno038_SALESPEOPLE values (1004,'Motika','London',0.11);
+5)insert into rno038_SALESPEOPLE values (1007,'Rifkin','Barcelona',0.15);
+6)insert into rno038_SALESPEOPLE values (1003,'Axelrod','New York',0.10);
+7)create table rno038_CUSTOMERS(Cnum varchar2(20), Cname varchar(20), City varchar(20), Rating number(4), Snum number(4)); 
+8) insert into rno038_CUSTOMERS values(2002,'Giovanni','Romne',200,1003);
+9)insert into rno038_CUSTOMERS values(2003,'lIU','San jose',200,1002);  
+10)insert into rno038_CUSTOMERS values(2004,'Grass','Berlin',300,1002); 
+11)insert into rno038_CUSTOMERS values(2006,'Clemens','London',100,1001);
+12)insert into rno038_CUSTOMERS values(2008,'Cisneros','San Jose',300,1007);
+13)insert into rno038_CUSTOMERS values(2007,'Pereira','Rome',100,1004);
+14)create table rno038_Orders(Onum number(4), Amt number(7,2), Odate date, Cnum number(4), Snum number(4));
+15)insert into rno038_Orders values (3001,18.69,'03-OCT-1990',2008,1007);
+16)insert into rno038_Orders values (3002,1900.10,'03-OCT-1990',2007,1004);
+17)insert into rno038_Orders values (3005,5160.45,'03-OCT-1990',2003,1002);
+18)insert into rno038_Orders values (3006,1098.16,'03-OCT-1990',2008,1007);
+19)insert into rno038_Orders values (3009,1713.23,'04-OCT-1990',2002,1003); 
+20)insert into rno038_Orders values (3007,75.75,'04-OCT-1990',2004,1002);
+21)insert into rno038_Orders values (3008,4723.00,'05-OCT-1990',2006,1001);
+22)insert into rno038_Orders values (3008,1309.95,'06-OCT-1990',2004,1002);
+23)insert into rno038_Orders values (3011,9891.88,'06-OCT-1990',2006,1001);
+24)select * from rno038_SALESPEOPLE;
+25)select * from rno038_CUSTOMERS;
+26)select * from rno038_Orders;
+27)select * from rno038_Orders where amt>1000;
+28)select Sname, City from rno038_SALESPEOPLE where city='London' and comm >0.10;
+29)select * from rno038_CUSTOMERS where city='Rome' or rating>=100;
+30)select * from rno038_Orders where (amt<1000 or not(odate = '03-OCT-1990' and cnum > 2003));
+31)Select * from rno038_Orders where NOT ((odate = '03-OCT-1990' OR snum>1006) AND amt >= 1500);
+32)Select snum, sname, city, comm From rno038_Salespeople where (comm > 0.12 OR comm <0.14);
+
+
+----------------------------6th Assighment----------------------------------
+1)select * from rno038_Orders where odate='03-OCT-1990' or odate='04-OCT-1990';
+2)select * from rno038_Customers where Snum in (select Snum from rno038_SALESPEOPLE where Sname='Peel' or Sname='Motika');
+3)select * from rno038_Customers where Cname between 'A' and 'H';
+4)select * from rno038_Customers where Cname like 'C%';
+5)select * from rno038_Orders where Amt!=0 or Amt!=null;
+
+
+---------------------------7th Assighment-------------------------------------
+1)select count(odate) from rno038_Orders where odate='03-OCT-1990';
+2)select City, count(City) from rno038_Customers group by city;
+3)select min(cnum) from rno038_Orders;
+4)select min(Cname) from rno038_Customers where cname like 'G%';
+5)select City, max(Rating) from rno038_Customers group by City;
+6)select odate ,count(distinct snum) from rno038_Orders group by odate;
+
+---------------------------------------8th Assighment----------------------------------
+1)select onum, rno038_Orders.snum,comm from rno038_Orders, rno038_SalesPeople where rno038_Orders.snum=rno038_SalesPeople.snum;
+2)select 'City= ' || City ||', Max ratinng= ' || max(rating) from rno038_CUSTOMERS group by City;
+3)select Cname, Cnum from rno038_Customers order by Rating;
+4)select odate, count(onum) "No of Orders" from rno038_Orders group by odate order by count(onum) desc;
+
+-------------------------------------9th Assighment-----------------------------------------------
+1)select onum , cname from rno038_Orders,rno038_CUSTOMERS where rno038_Orders.Cnum=rno038_Customers.Cnum; 
+2) select onum, sname, cname from  rno038_Orders,rno038_CUSTOMERS,rno038_Salespeople where rno038_SALESPEOPLE.snum=rno038_Customers.snum and rno038_Customers.snum=rno038_Orders.snum;
+3)select onum, sname, cname, comm*100 "Rate of interset" from rno038_Orders, rno038_Customers, rno038_Salespeople where comm*100>12 and rno038_SALESPEOPLE.snum=rno038_Customers.snum and rno038_Customers.snum=rno038_Orders.snum;
+4)select 
+
+Write a query that calculates the amount of the salesperson’s commission on each
+order by a customer with a rating above 100.

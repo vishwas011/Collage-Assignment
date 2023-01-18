@@ -1,0 +1,27 @@
+
+<html>
+    <head>
+        <title>BasicWebApp</title>
+    </head>
+    <body>
+        <h1>Student List</h1>
+        <h3>@ViewBag.cid</h3>
+        <table border="1">
+            <tr>
+                <th>Roll No</th>
+                <th>Student Name</th>
+                <th>Age</th>
+                <th>Grade</th>
+            </tr>
+            @foreach (var stud in Model.StudentInfo)
+            {
+                <tr>
+                    <td>@stud.Id</td>
+                    <td>@stud.StudentName</td>
+                    <td>@stud.Age</td>
+                    <td>@stud.Grade</td>
+                </tr>
+            }
+        </table>
+    </body>
+</html>
